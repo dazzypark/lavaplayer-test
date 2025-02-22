@@ -153,7 +153,7 @@ public class HttpClientTools {
      */
     public static boolean isSuccessWithContent(int statusCode) {
         return statusCode == HttpStatus.SC_OK || statusCode == HttpStatus.SC_PARTIAL_CONTENT ||
-            statusCode == HttpStatus.SC_NON_AUTHORITATIVE_INFORMATION;
+            statusCode == HttpStatus.SC_NON_AUTHORITATIVE_INFORMATION || statusCode == HttpStatus.SC_TEMPORARY_REDIRECT;
     }
 
     /**
