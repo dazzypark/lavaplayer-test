@@ -91,13 +91,15 @@ public class PersistentHttpStream extends SeekableInputStream implements AutoClo
     }
 
     protected HttpGet getConnectRequest() {
-        HttpGet request = new HttpGet(getConnectUrl());
+        URI connectUrl = getConnectUrl();
+        HttpGet request = new HttpGet(connectUrl);
 
         if (position > 0 && useHeadersForRange()) {
             request.setHeader(HttpHeaders.RANGE, "bytes=" + position + "-");
         }
 
         request.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36");
+        request.setHeader("Referer", connectUrl.toString());
 
         return request;
     }
