@@ -98,8 +98,15 @@ public class PersistentHttpStream extends SeekableInputStream implements AutoClo
             request.setHeader(HttpHeaders.RANGE, "bytes=" + position + "-");
         }
 
-        request.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36");
+        request.setHeader("Accept", "*/*");
+//        request.setHeader("Accept-Encoding", "gzip, deflate, br");
+//        request.setHeader("Accept-Language", "ko-KR,ko;q=0.9");
+//        request.setHeader("Priority", "u=3, i");
         request.setHeader("Referer", connectUrl.toString());
+        request.setHeader("Sec-Fetch-Dest", "video");
+        request.setHeader("Sec-Fetch-Mode", "no-cors");
+        request.setHeader("Sec-Fetch-Site", "same-origin");
+        request.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36");
 
         return request;
     }
